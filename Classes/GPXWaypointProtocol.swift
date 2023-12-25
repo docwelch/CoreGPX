@@ -29,6 +29,11 @@ public protocol GPXWaypointProtocol: GPXElement {
     ///
     /// Should be in unit **meters** (m). Height of geoid, or mean sea level, above WGS84 earth ellipsoid
     var geoidHeight: Double? { get set }
+
+    /// Speed
+    ///
+    /// Should be in unit meters/second
+    var speed: Double? { get set }
     
     /// Name of current point
     ///
@@ -137,6 +142,7 @@ extension GPXWaypointProtocol {
         wpt.time = time
         wpt.magneticVariation = magneticVariation
         wpt.geoidHeight = geoidHeight
+        wpt.speed = speed
         wpt.name = name
         wpt.comment = comment
         wpt.desc = desc
