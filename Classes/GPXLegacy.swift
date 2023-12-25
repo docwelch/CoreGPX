@@ -241,6 +241,7 @@ public class GPXLegacyWaypoint: GPXElement, GPXWaypointProtocol {
     public var time: Date?
     public var magneticVariation: Double?
     public var geoidHeight: Double?
+    public var speed: Double?
     public var name: String?
     public var comment: String?
     public var desc: String?
@@ -268,6 +269,7 @@ public class GPXLegacyWaypoint: GPXElement, GPXWaypointProtocol {
             case "ele":         self.elevation = Convert.toDouble(from: child.text)
             case "magvar":      self.magneticVariation = Convert.toDouble(from: child.text)
             case "geoidheight": self.geoidHeight = Convert.toDouble(from: child.text)
+            case "speed":       self.speed = Convert.toDouble(from: child.text)
             case "name":        self.name = child.text
             case "cmt":         self.comment = child.text
             case "desc":        self.desc = child.text
@@ -332,6 +334,7 @@ public class GPXLegacyWaypoint: GPXElement, GPXWaypointProtocol {
         addSpeedCourseTags(toGPX: gpx, indLvl: indentationLevel)
         self.addProperty(forDoubleValue: magneticVariation, gpx: gpx, tagName: "magvar", indentationLevel: indentationLevel)
         self.addProperty(forDoubleValue: geoidHeight, gpx: gpx, tagName: "geoidheight", indentationLevel: indentationLevel)
+        self.addProperty(forDoubleValue: speed, gpx: gpx, tagName: "speed", indentationLevel: indentationLevel)
         self.addProperty(forValue: name, gpx: gpx, tagName: "name", indentationLevel: indentationLevel)
         self.addProperty(forValue: comment, gpx: gpx, tagName: "cmt", indentationLevel: indentationLevel)
         self.addProperty(forValue: desc, gpx: gpx, tagName: "desc", indentationLevel: indentationLevel)
