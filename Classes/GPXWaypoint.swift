@@ -29,6 +29,7 @@ public class GPXWaypoint: GPXElement, GPXWaypointProtocol, Codable {
         case longitude = "lon"
         case magneticVariation = "magvar"
         case geoidHeight = "geoidheight"
+        case speed = "speed"
         case name
         case comment = "cmt"
         case desc
@@ -82,6 +83,11 @@ public class GPXWaypoint: GPXElement, GPXWaypointProtocol, Codable {
     ///
     /// Should be in unit **meters** (m). Height of geoid, or mean sea level, above WGS84 earth ellipsoid
     public var geoidHeight: Double?
+
+    /// Speed
+    ///
+    /// Should be in units meters/second
+    public var speed: Double?
     
     /// Name of current point
     ///
@@ -224,12 +230,13 @@ public class GPXWaypoint: GPXElement, GPXWaypointProtocol, Codable {
     ///     - latitude: latitude value of the waypoint, in `Double` or `CLLocationDegrees`, **WGS 84** datum only. Should be within the ranges of **-90.0 to 90.0**
     ///     - longitude: longitude value of the waypoint, in `Double` or `CLLocationDegrees`, **WGS 84** datum only. Should be within the ranges of **-180.0 to 180.0**
     ///
-    public init(links: [GPXLink] = [], elevation: Double? = nil, time: Date? = nil, magneticVariation: Double? = nil, geoidHeight: Double? = nil, source: String? = nil, type: String? = nil, satellites: Int? = nil, horizontalDilution: Double? = nil, verticalDilution: Double? = nil, positionDilution: Double? = nil, extensions: GPXExtensions? = nil, latitude: Double? = nil, longitude: Double? = nil) {
+    public init(links: [GPXLink] = [], elevation: Double? = nil, time: Date? = nil, magneticVariation: Double? = nil, geoidHeight: Double? = nil, speed: Double? = nil, source: String? = nil, type: String? = nil, satellites: Int? = nil, horizontalDilution: Double? = nil, verticalDilution: Double? = nil, positionDilution: Double? = nil, extensions: GPXExtensions? = nil, latitude: Double? = nil, longitude: Double? = nil) {
         self.links = links
         self.elevation = elevation
         self.time = time
         self.magneticVariation = magneticVariation
         self.geoidHeight = geoidHeight
+        self.spped = speed
         self.source = source
         self.type = type
         self.satellites = satellites
@@ -268,6 +275,7 @@ public class GPXWaypoint: GPXElement, GPXWaypointProtocol, Codable {
             case "ele":         self.elevation = Convert.toDouble(from: child.text)
             case "magvar":      self.magneticVariation = Convert.toDouble(from: child.text)
             case "geoidheight": self.geoidHeight = Convert.toDouble(from: child.text)
+            case "speed":       self.speed = Convert.ToDouble(from: child.text)
             case "name":        self.name = child.text
             case "cmt":         self.comment = child.text
             case "desc":        self.desc = child.text
@@ -333,6 +341,7 @@ public class GPXWaypoint: GPXElement, GPXWaypointProtocol, Codable {
         self.addProperty(forValue: Convert.toString(from: time), gpx: gpx, tagName: "time", indentationLevel: indentationLevel)
         self.addProperty(forDoubleValue: magneticVariation, gpx: gpx, tagName: "magvar", indentationLevel: indentationLevel)
         self.addProperty(forDoubleValue: geoidHeight, gpx: gpx, tagName: "geoidheight", indentationLevel: indentationLevel)
+        self.addProperty(forDoubleValue: speed, gpx: gpx, tagName "speed", indentationLevel: indentationLevel)
         self.addProperty(forValue: name, gpx: gpx, tagName: "name", indentationLevel: indentationLevel)
         self.addProperty(forValue: comment, gpx: gpx, tagName: "cmt", indentationLevel: indentationLevel)
         self.addProperty(forValue: desc, gpx: gpx, tagName: "desc", indentationLevel: indentationLevel)
