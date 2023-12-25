@@ -27,7 +27,7 @@ public final class GPXTrackPoint: GPXWaypoint {
     }
     
     public override init(links: [GPXLink] = [], elevation: Double? = nil, time: Date? = nil, magneticVariation: Double? = nil, geoidHeight: Double? = nil, speed: Double? = nil, source: String? = nil, type: String? = nil, satellites: Int? = nil, horizontalDilution: Double? = nil, verticalDilution: Double? = nil, positionDilution: Double? = nil, extensions: GPXExtensions? = nil, latitude: Double? = nil, longitude: Double? = nil) {
-        super.init(links: links, elevation: elevation, time: time, magneticVariation: magneticVariation, geoidHeight: geoidHeight, source: source, type: type, satellites: satellites, horizontalDilution: horizontalDilution, verticalDilution: verticalDilution, positionDilution: positionDilution, extensions: extensions, latitude: latitude, longitude: longitude)
+        super.init(links: links, elevation: elevation, time: time, magneticVariation: magneticVariation, geoidHeight: geoidHeight, speed: speed, source: source, type: type, satellites: satellites, horizontalDilution: horizontalDilution, verticalDilution: verticalDilution, positionDilution: positionDilution, extensions: extensions, latitude: latitude, longitude: longitude)
     }
     
     override init(raw: GPXRawElement) {
