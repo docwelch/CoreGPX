@@ -480,7 +480,7 @@ public final class GPXLegacyRoutePoint: GPXLegacyWaypoint {
 public final class GPXLegacyTrackPoint: GPXLegacyWaypoint {
     
     public var course: Double?
-    public var speed: Double?
+    //public var speed: Double?
     
     override func upgrade() -> GPXTrackPoint {
         let upgraded: GPXTrackPoint = self.convert()
@@ -493,9 +493,9 @@ public final class GPXLegacyTrackPoint: GPXLegacyWaypoint {
         if let course = course {
             dict["course"] = "\(course)"
         }
-        if let speed = speed {
+        /*if let speed = speed {
             dict["speed"] = "\(speed)"
-        }
+        }*/
         upgraded.extensions!.append(at: "legacy", contents: dict)
         return upgraded
     }
@@ -506,7 +506,7 @@ public final class GPXLegacyTrackPoint: GPXLegacyWaypoint {
     
     override func addSpeedCourseTags(toGPX gpx: NSMutableString, indLvl indentationLevel: Int) {
         self.addProperty(forDoubleValue: course, gpx: gpx, tagName: "course", indentationLevel: indentationLevel)
-        self.addProperty(forDoubleValue: speed, gpx: gpx, tagName: "speed", indentationLevel: indentationLevel)
+        //self.addProperty(forDoubleValue: speed, gpx: gpx, tagName: "speed", indentationLevel: indentationLevel)
     }
     
 }
